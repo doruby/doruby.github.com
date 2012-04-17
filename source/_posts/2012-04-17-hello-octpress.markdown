@@ -35,5 +35,10 @@ Octpress就是用Ruby写的，相信选择OctPress的朋友应该都不陌生，
 ###Github
 这个你必须拥有一个帐号，即使你不使用GitHub Page托管你的Blog，越来越多的开源项目托管在上面。
 
+一篇不错的教程：
+[Github Pages极简教程](http://chen.yanping.me/cn/blog/2012/03/18/github-pages-step-by-step/)
+
+
+
 
 
