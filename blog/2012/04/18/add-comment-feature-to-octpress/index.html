@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello Octpress! - Doruby's Blog</title>
+  <title>为octpress增加评论功能 - Doruby's Blog</title>
   <meta name="author" content="doruby">
 
   
-  <meta name="description" content="折腾了一天，把Octpress搭建到Github Page上去了，还学习了Git和Markdown使用，这里实际操作一些，就当练手，该文本身每啥实质内容。 Octpress是什么？ Octopress is a framework designed by Brandon Mathis for &hellip;">
+  <meta name="description" content="octpress生成的blog是静态的页面，一个blog如果没有评论功能必然是不完美的，其实可以利用通过第三方完成评论。 使用Octpress自带的disqus插件 使用disqus相对简单，只要在disqus申请一个帐号，然后修改_config.yml文件中的disqus插件配置即可开启。 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://doruby.github.com/blog/2012/04/17/hello-octpress">
+  <link rel="canonical" href="http://doruby.github.com/blog/2012/04/18/add-comment-feature-to-octpress">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Hello Octpress!</h1>
+      <h1 class="entry-title">为octpress增加评论功能</h1>
     
     
       <p class="meta">
@@ -83,53 +83,63 @@
   
 
 
-<time datetime="2012-04-17T16:10:00+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2012</time>
+<time datetime="2012-04-18T08:49:00+08:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>折腾了一天，把Octpress搭建到Github Page上去了，还学习了Git和Markdown使用，这里实际操作一些，就当练手，该文本身每啥实质内容。</p>
+<div class="entry-content"><p>octpress生成的blog是静态的页面，一个blog如果没有评论功能必然是不完美的，其实可以利用通过第三方完成评论。</p>
 
 <!-- more -->
 
 
-<h2>Octpress是什么？</h2>
+<h3>使用Octpress自带的disqus插件</h3>
 
-<blockquote><p><a href="http://octopress.org/">Octopress</a> is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages. <br/>
-简单的说
-Octopress 是一套使用Ruby语言开发的博客网站框架。</p></blockquote>
+<p>使用disqus相对简单，只要在disqus申请一个帐号，然后修改_config.yml文件中的disqus插件配置即可开启。</p>
 
-<h2>使用octpress需要掌握以下知识：</h2>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Disqus Comments
+</span><span class='line'>disqus_short_name: //写上你申请的short name
+</span><span class='line'>disqus_show_comment_count: //写上评论的个数</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使用国内的友言代码</h3>
+
+<p> 使用友言代码你可以直接修改layout代码，也可以写个小插件来完成。友言毕竟是国内的公司，很多功能是为国内用户定制的，所以我选择了使用友言。</p>
 
 <ul>
-<li><a href="http://git-scm.com">Git</a></li>
-<li><a href="http://wowubuntu.com/markdown/">Markdown</a></li>
-<li><a href="http://www.ruby-lang.org">Ruby</a>?  （如果你想修改一些东西）</li>
-<li><a href="https://github.com/">Github</a>? （如果你想使用github page搭建一个免费的blog）</li>
+<li>首先到友言申请一个帐号</li>
+<li>直接修改source/_layouts/post.html文件<br/>
+删除原来disqus相关代码<br/>
+在相同位置增加以下代码：</li>
 </ul>
 
 
-<h3>Git</h3>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;section>
+</span><span class='line'>    &lt;h1>评论&lt;/h1>
+</span><span class='line'>      &lt;!-- UY BEGIN -->
+</span><span class='line'>    &lt;div id="uyan_frame">&lt;/div>
+</span><span class='line'>    &lt;script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1605050" async="">&lt;/script>
+</span><span class='line'>    &lt;!-- UY END -->
+</span><span class='line'>  &lt;/section>
+</span><span class='line'>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
 
-<p>如果没有基础，可以下载<a href="https://github.s3.amazonaws.com/media/progit-zh.epub">Pro Git中文版</a>进行学习</p>
 
-<h3>MarkDown</h3>
 
-<p>语法相对简单，如果不了解，可以阅读<a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版)</a>，很多就可以学会。<br/>
-推荐编辑器使用<a href="http://mouapp.com/">Mou</a></p>
-
-<h3>Ruby</h3>
-
-<p>Octpress就是用Ruby写的，相信选择OctPress的朋友应该都不陌生，推荐Ruby社区<a href="http://ruby-china.org">Ruby China</a></p>
-
-<h3>Github</h3>
-
-<p>这个你必须拥有一个帐号，即使你不使用GitHub Page托管你的Blog，越来越多的开源项目托管在上面。</p>
-
-<p>一篇不错的教程：
-<a href="http://chen.yanping.me/cn/blog/2012/03/18/github-pages-step-by-step/">Github Pages极简教程</a></p>
 </div>
 
 
@@ -152,7 +162,7 @@ Octopress 是一套使用Ruby语言开发的博客网站框架。</p></blockquot
   
 
 
-<time datetime="2012-04-17T16:10:00+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2012</time>
+<time datetime="2012-04-18T08:49:00+08:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
       
 
 
@@ -160,7 +170,7 @@ Octopress 是一套使用Ruby语言开发的博客网站框架。</p></blockquot
 <!--     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://doruby.github.com/blog/2012/04/17/hello-octpress/" data-via="" data-counturl="http://doruby.github.com/blog/2012/04/17/hello-octpress/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://doruby.github.com/blog/2012/04/18/add-comment-feature-to-octpress/" data-via="" data-counturl="http://doruby.github.com/blog/2012/04/18/add-comment-feature-to-octpress/" >Tweet</a>
   
   
   
@@ -169,8 +179,8 @@ Octopress 是一套使用Ruby语言开发的博客网站框架。</p></blockquot
      -->
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/04/17/hello-octpress/" title="Previous Post: Hello Octpress!">&laquo; Hello Octpress!</a>
       
-        <a class="basic-alignment right" href="/blog/2012/04/18/add-comment-feature-to-octpress/" title="Next Post: 为octpress增加评论功能">为octpress增加评论功能 &raquo;</a>
       
     </p>
   </footer>

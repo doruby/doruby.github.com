@@ -4,7 +4,7 @@
   <title><![CDATA[Doruby's Blog]]></title>
   <link href="http://doruby.github.com/atom.xml" rel="self"/>
   <link href="http://doruby.github.com/"/>
-  <updated>2012-04-17T18:51:55+08:00</updated>
+  <updated>2012-04-18T14:22:58+08:00</updated>
   <id>http://doruby.github.com/</id>
   <author>
     <name><![CDATA[doruby]]></name>
@@ -14,11 +14,72 @@
 
   
   <entry>
+    <title type="html"><![CDATA[为octpress增加评论功能]]></title>
+    <link href="http://doruby.github.com/blog/2012/04/18/add-comment-feature-to-octpress/"/>
+    <updated>2012-04-18T08:49:00+08:00</updated>
+    <id>http://doruby.github.com/blog/2012/04/18/add-comment-feature-to-octpress</id>
+    <content type="html"><![CDATA[<p>octpress生成的blog是静态的页面，一个blog如果没有评论功能必然是不完美的，其实可以利用通过第三方完成评论。</p>
+
+<!-- more -->
+
+
+<h3>使用Octpress自带的disqus插件</h3>
+
+<p>使用disqus相对简单，只要在disqus申请一个帐号，然后修改_config.yml文件中的disqus插件配置即可开启。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Disqus Comments
+</span><span class='line'>disqus_short_name: //写上你申请的short name
+</span><span class='line'>disqus_show_comment_count: //写上评论的个数</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使用国内的友言代码</h3>
+
+<p> 使用友言代码你可以直接修改layout代码，也可以写个小插件来完成。友言毕竟是国内的公司，很多功能是为国内用户定制的，所以我选择了使用友言。</p>
+
+<ul>
+<li>首先到友言申请一个帐号</li>
+<li>直接修改source/_layouts/post.html文件<br/>
+删除原来disqus相关代码<br/>
+在相同位置增加以下代码：</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;section>
+</span><span class='line'>    &lt;h1>评论&lt;/h1>
+</span><span class='line'>      &lt;!-- UY BEGIN -->
+</span><span class='line'>    &lt;div id="uyan_frame">&lt;/div>
+</span><span class='line'>    &lt;script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1605050" async="">&lt;/script>
+</span><span class='line'>    &lt;!-- UY END -->
+</span><span class='line'>  &lt;/section>
+</span><span class='line'>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Hello Octpress!]]></title>
     <link href="http://doruby.github.com/blog/2012/04/17/hello-octpress/"/>
     <updated>2012-04-17T16:10:00+08:00</updated>
     <id>http://doruby.github.com/blog/2012/04/17/hello-octpress</id>
     <content type="html"><![CDATA[<p>折腾了一天，把Octpress搭建到Github Page上去了，还学习了Git和Markdown使用，这里实际操作一些，就当练手，该文本身每啥实质内容。</p>
+
+<!-- more -->
+
 
 <h2>Octpress是什么？</h2>
 
